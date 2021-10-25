@@ -11,9 +11,14 @@ public class ConcurrentMain {
         SimpleThread th2 = new SimpleThread();
         th2.start();
 
+        th2.interrupt();
+
         Thread th3 = new Thread((new SimpleRunner()));
         th3.start();
-        System.out.println("break");
+        new Thread(() ->
+                System.out.println("Hello from lambda Runnable")
+        ).start();
+
 
     }
 }
@@ -29,6 +34,7 @@ class SimpleThread extends Thread {
             }
             System.out.println(GREEN + "INFO - Runnable  " + currentThread().getName() + " - " + i);
         }
+
     }
 }
 
@@ -41,7 +47,7 @@ class SimpleRunner implements Runnable {
             } catch (InterruptedException e) {
                 System.out.println(RED + "WARN - " + Thread.currentThread().getName() + " was interrupted ");
             }
-            System.out.println(CYAN  + "INFO - " + Thread.currentThread().getName() + " - " + i);
+            System.out.println(CYAN + "INFO - " + Thread.currentThread().getName() + " - " + i);
         }
 
     }
