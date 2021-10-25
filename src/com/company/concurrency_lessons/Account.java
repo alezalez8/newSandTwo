@@ -29,23 +29,33 @@ public class Account {
     }
 
     public void withdraw(int amount) {
+        System.out.println("____________________________________________");
         System.out.println("Снятие денег.");
         System.out.println("Баланс до операции:    " + balance);
         balance -= amount;
         System.out.println("Баланс после операции:    " + balance);
+        System.out.println("____________________________________________");
+
 
     }
 
     public void deposit(int amount) {
+        System.out.println("____________________________________________");
+
         System.out.println("Пополнение счета");
         System.out.println("Баланс до операции:    " + balance);
         balance += amount;
         System.out.println("Баланс после операции:    " + balance);
+        System.out.println("____________________________________________");
 
     }
 
 
     public int getBalance() {
         return balance;
+    }
+
+    public AtomicInteger getFailCounter() {
+        return failCounter;
     }
 }

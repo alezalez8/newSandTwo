@@ -27,16 +27,18 @@ public class OperationsOnve {
                 }
             }).start();
 
-            System.out.println("Перевод денег с b на a, основной поток");
+            System.out.println("Перевод денег с b на a, основной поток, итерация №" + finalI);
             transfer(b, a, 300);
         }
-        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        System.out.println("Баланс счета А:   " + a.getBalance());
-        System.out.println("Баланс счета B:   " + b.getBalance());
 
         System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         System.out.println("Баланс счета А:   " + a.getBalance());
         System.out.println("Баланс счета B:   " + b.getBalance());
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+/*
+        System.out.println("Баланс счета А:   " + a.getBalance());
+        System.out.println("Баланс счета B:   " + b.getBalance());
+*/
 
     }
 
