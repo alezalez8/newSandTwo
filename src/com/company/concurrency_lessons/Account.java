@@ -41,7 +41,6 @@ public class Account {
 
     public void deposit(int amount) {
         System.out.println("____________________________________________");
-
         System.out.println("Пополнение счета");
         System.out.println("Баланс до операции:    " + balance);
         balance += amount;

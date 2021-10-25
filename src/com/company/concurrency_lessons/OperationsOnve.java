@@ -27,7 +27,7 @@ public class OperationsOnve {
                 }
             }).start();
 
-            System.out.println("Перевод денег с b на a, основной поток, итерация №" + finalI);
+            System.out.println("Перевод денег с b на a, основной поток, итерация №" + finalI  );
             transfer(b, a, 300);
         }
 
