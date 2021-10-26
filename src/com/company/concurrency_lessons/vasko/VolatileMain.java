@@ -1,11 +1,24 @@
 package com.company.concurrency_lessons.vasko;
 
+import static com.company.concurrency_lessons.vasko.ColorScheme.*;
+
 public class VolatileMain {
 
-    private static int counter;
+    private static volatile int counter;
+    private static int x;
+    private static int y;
 
     public static void main(String[] args) {
 
+        new SimpleWriter().start();
+        new SimpleReader().start();
+
+    }
+
+    private static void update() {
+        counter++;
+        x++;
+        y++;
     }
 
     private static class SimpleWriter extends Thread {
@@ -13,7 +26,7 @@ public class VolatileMain {
         public void run() {
             int localCounter = counter;
             for (int i = 0; i < 10; i++) {
-                System.out.println("Writer increments counter " + (localCounter + 1));
+                System.out.println(GREEN + "Writer increments counter " + (localCounter + 1));
                 counter = ++localCounter;
                 try {
                     Thread.sleep(500);
@@ -30,8 +43,10 @@ public class VolatileMain {
             int localCounter = counter;
 
             while (localCounter < 10) {
-                System.out.println("Reader reads counter " + counter);
-                localCounter = counter;
+                if (localCounter != counter) {
+                    System.out.println(CYAN + "Reader reads counter " + counter);
+                    localCounter = counter;
+                }
             }
         }
     }
