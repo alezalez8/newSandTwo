@@ -1,5 +1,10 @@
 package com.company.concurrency_lessons.vasko;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.TimeUnit;
+
 import static com.company.concurrency_lessons.vasko.ColorScheme.RED;
 
 public class Launcher {
@@ -10,7 +15,8 @@ public class Launcher {
         boolean isDaemon = true;
         System.out.println(RED + "Starting main thread");
         GCDRunnable r = new GCDRunnable(isDaemon);
-        runInOneThread(r, isDaemon);
+//        runInOneThread(r, isDaemon);
+        runWithExecutors(r, isDaemon);
         Thread.sleep(100);
 
 
@@ -33,5 +39,21 @@ public class Launcher {
         th.interrupt();
 
     }
+
+    private static void runWithExecutors(GCDRunnable r, boolean isDaemon) throws InterruptedException {
+
+        ThreadFactory
+
+
+        ExecutorService executorService = Executors.newFixedThreadPool(POOL_SIZE);
+        for (int i = 0; i < 5; i++) {
+            executorService.execute(r);
+        }
+        executorService.shutdown();
+        executorService.awaitTermination(30, TimeUnit.SECONDS);
+
+    }
+
+
 
 }
