@@ -42,18 +42,25 @@ public class Launcher {
 
     private static void runWithExecutors(GCDRunnable r, boolean isDaemon) throws InterruptedException {
 
-        ThreadFactory
+        ThreadFactory factory = r1 -> {
+            Thread thread = new Thread(r);
+            if (isDaemon) {
+                thread.setDaemon(true);
+            }
+            return thread;
+
+        };
 
 
-        ExecutorService executorService = Executors.newFixedThreadPool(POOL_SIZE);
+        ExecutorService executorService = Executors.newFixedThreadPool(POOL_SIZE, factory);
         for (int i = 0; i < 5; i++) {
             executorService.execute(r);
         }
         executorService.shutdown();
-        executorService.awaitTermination(30, TimeUnit.SECONDS);
+
+        //executorService.awaitTermination(30, TimeUnit.SECONDS);
 
     }
-
 
 
 }
