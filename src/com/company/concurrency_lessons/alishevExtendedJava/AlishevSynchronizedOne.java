@@ -3,7 +3,7 @@ package com.company.concurrency_lessons.alishevExtendedJava;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class AlishevSynchronizedOne {
-    private  int counter;
+    private int counter;
     private AtomicInteger count = new AtomicInteger(0);
 
     public static void main(String[] args) throws InterruptedException {
@@ -12,12 +12,11 @@ public class AlishevSynchronizedOne {
     }
 
     public void doWork() throws InterruptedException {
-        Thread thread1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < 10000; i++){
-                    counter += 1;
-                count.incrementAndGet();}
+        Thread thread1 = new Thread(() -> {
+            for (int i = 0; i < 10000; i++) {
+                // counter += 1;
+                increment();
+                //count.incrementAndGet();
             }
         });
 
@@ -25,8 +24,11 @@ public class AlishevSynchronizedOne {
             @Override
             public void run() {
                 for (int i = 0; i < 10000; i++) {
-                    counter += 1;
-                count.incrementAndGet();}
+                    //  counter += 1;
+                    increment();
+
+                    // count.incrementAndGet();
+                }
             }
         });
 
@@ -38,5 +40,9 @@ public class AlishevSynchronizedOne {
 
         System.out.println(counter);
         System.out.println(count);
+    }
+
+    public synchronized void increment() {
+        counter++;
     }
 }
