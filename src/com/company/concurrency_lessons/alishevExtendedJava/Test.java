@@ -20,6 +20,7 @@ class Worker {
     private List<Integer> list1 = new ArrayList<>();
     private List<Integer> list2 = new ArrayList<>();
 
+
     public void addToList1() {
         synchronized (o1) {
             try {
