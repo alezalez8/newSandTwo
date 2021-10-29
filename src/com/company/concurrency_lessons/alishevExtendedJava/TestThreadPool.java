@@ -1,7 +1,10 @@
 package com.company.concurrency_lessons.alishevExtendedJava;
 
-public class TestThreadPool {
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
+public class TestThreadPool {
+    ExecutorService executorService = Executors.newFixedThreadPool(2);
 }
 
 class Work implements Runnable {
@@ -18,6 +21,6 @@ class Work implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("Hello");
+        System.out.println("Work " + id + " was completed");
     }
 }
