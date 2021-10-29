@@ -31,8 +31,8 @@ class Worker {
         }
     }
 
-    public synchronized void addToList2() {
-
+    public void addToList2() {
+        synchronized (o2) {
             try {
                 Thread.sleep(1);
             } catch (InterruptedException e) {
@@ -40,7 +40,7 @@ class Worker {
             }
             list2.add(random.nextInt(100));
 
-
+        }
     }
 
     public void work() {
