@@ -10,15 +10,17 @@ import java.util.concurrent.BlockingQueue;
 import static com.company.concurrency_lessons.vasko.ColorScheme.*;
 
 public class PatternProducerVar1 {
-    private static BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(10);
+    //    public static BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(10);
     private static volatile boolean isWork = true;
 
     public static void main(String[] args) throws InterruptedException {
+        WaitNotif wn = new WaitNotif();
+
         Thread thread1 = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    producer();
+                    wn.producer();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -28,7 +30,7 @@ public class PatternProducerVar1 {
             @Override
             public void run() {
                 try {
-                    producer();
+                    wn.producer();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -39,7 +41,7 @@ public class PatternProducerVar1 {
             @Override
             public void run() {
                 try {
-                    concumer();
+                    wn.concumer();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -50,7 +52,7 @@ public class PatternProducerVar1 {
             @Override
             public void run() {
                 try {
-                    concumer();
+                    wn.concumer();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -59,49 +61,69 @@ public class PatternProducerVar1 {
 
         thread1.start();
         thread2.start();
-        //thread11.start();
-       // thread22.start();
 
+        System.out.println(CYAN + " START SCANNER");
         Scanner scanner = new Scanner(System.in);
         if (scanner.nextLine().equals("q")) {
-          stopWorking();
-          //thread1.interrupt();
-          //thread2.interrupt();
+            System.out.println(CYAN + " ENTER TO SCANNER");
+            thread1.interrupt();
+            thread2.interrupt();
+            stopWorking(wn);
         }
 
         thread1.join();
         thread2.join();
-        thread11.join();
-        //thread22.join();
+
     }
 
-    private static void producer() throws InterruptedException {
+
+    private static void stopWorking(WaitNotif wn) {
+        System.out.println(CYAN + "STOP EXECUTE -----------------------------------------------------");
+        wn.disable();
+    }
+
+}
+
+class WaitNotif {
+    private final BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(10);
+    private boolean isWork = true;
+
+    public boolean isWork() {
+        return isWork;
+    }
+
+    public void disable() {
+        isWork = false;
+    }
+
+    public void producer() throws InterruptedException {
         Random random = new Random();
         int rand = 0;
-
-        while (isWork) {
+        while (isWork()) {
             rand = random.nextInt(100);
             queue.put(rand);
             System.out.println(RED + "Random number is " + rand);
+            /*if(!isWork()) {
+                Thread.currentThread().interrupt();
+            }*/
         }
     }
 
-    private static void concumer() throws InterruptedException {
+    public void concumer() throws InterruptedException {
         int x = 0;
         Random random = new Random();
-        while (isWork) {
-            Thread.sleep(100);
+        while (isWork()) {
+            Thread.sleep(40);
             if (random.nextInt(10) == 5) {
                 x = queue.take();
                 System.out.println(YELLOW + x);
                 System.out.println(BLUE + "Queue size is " + queue.size());
+                /*if(!isWork()) {
+                    Thread.currentThread().interrupt();
+                }*/
 
             }
         }
     }
-
-    private static void stopWorking() {
-        PatternProducerVar1.isWork = false;
-    }
-
 }
+
