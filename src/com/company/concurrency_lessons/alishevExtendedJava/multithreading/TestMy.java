@@ -1,6 +1,4 @@
-package com.company.concurrency_lessons.alishevExtendedJava;
-
-import com.company.concurrency_lessons.vasko.ColorScheme;
+package com.company.concurrency_lessons.alishevExtendedJava.multithreading;
 
 import static com.company.concurrency_lessons.vasko.ColorScheme.*;
 

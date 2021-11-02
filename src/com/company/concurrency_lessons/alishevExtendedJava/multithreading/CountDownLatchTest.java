@@ -1,4 +1,4 @@
-package com.company.concurrency_lessons.alishevExtendedJava;
+package com.company.concurrency_lessons.alishevExtendedJava.multithreading;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;

@@ -1,6 +1,4 @@
-package com.company.concurrency_lessons.alishevExtendedJava;
-
-import java.util.concurrent.atomic.AtomicInteger;
+package com.company.concurrency_lessons.alishevExtendedJava.multithreading;
 
 public class AlishevSynchronizedOne {
     private int counter;

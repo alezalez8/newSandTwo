@@ -1,9 +1,5 @@
-package com.company.concurrency_lessons.alishevExtendedJava;
+package com.company.concurrency_lessons.alishevExtendedJava.multithreading;
 
-import com.company.concurrency_lessons.vasko.ColorScheme;
-import sun.misc.Timer;
-
-import java.sql.Time;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 

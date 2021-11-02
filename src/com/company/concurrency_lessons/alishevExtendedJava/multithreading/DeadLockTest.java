@@ -1,4 +1,4 @@
-package com.company.concurrency_lessons.alishevExtendedJava;
+package com.company.concurrency_lessons.alishevExtendedJava.multithreading;
 
 import java.util.Random;
 import java.util.concurrent.locks.Lock;
@@ -107,7 +107,7 @@ class Runner {
 
 class Account {
     private int balance = 10000;
-    Lock lock = new ReentrantLock();
+    // Lock lock = new ReentrantLock();
 
     public void deposit(int amount) {
         // lock.lock();
