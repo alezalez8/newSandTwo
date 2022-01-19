@@ -14,12 +14,10 @@ public class IteratorTest {
             System.out.println(i);
         }
 
-       // showList(list);
-       // System.out.println();
-       // list.removeIf(item -> item >= 128);
-      //  showList(list);
-
-
+        // showList(list);
+        // System.out.println();
+        // list.removeIf(item -> item >= 128);
+        //  showList(list);
 
 
     }
