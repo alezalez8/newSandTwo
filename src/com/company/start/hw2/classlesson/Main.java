@@ -1,4 +1,4 @@
-package com.company.start.hw2;
+package com.company.start.hw2.classlesson;
 
 import java.util.Scanner;
 
