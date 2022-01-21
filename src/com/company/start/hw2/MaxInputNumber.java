@@ -11,8 +11,8 @@ public class MaxInputNumber {
         int inputNumber;
 
         Scanner scanner = new Scanner(System.in);
-        for (int i = 1; i < 5; i++) {
-            System.out.println("Please input " + i + " nubmer");
+        for (int i = 0; i < 4; i++) {
+            System.out.println("Please input " + (i + 1) + " nubmer");
             inputNumber = scanner.nextInt();
             if (max < inputNumber) {
                 max = inputNumber;
