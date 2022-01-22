@@ -1,7 +1,4 @@
 package com.company.start.hw2;
-/**
- * search max from input data
- */
 
 import java.util.Scanner;
 
@@ -20,6 +17,5 @@ public class MaxInputNumber {
         }
         System.out.println("Maximum is " + max);
     }
-
 
 }

@@ -21,9 +21,6 @@ public class Circle {
             System.out.println("Point with coord x = " + x + ", y = " + y
                     + " is outsdide circle");
         }
-
-
     }
-
 
 }
