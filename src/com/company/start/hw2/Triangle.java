@@ -24,6 +24,7 @@ public class Triangle {
         yP = scanner.nextInt();
 
         // https://abakbot.ru/online-2/280-pointreug
+
         resA = (xA - xP) * (yB - yA) - (xB - xA) * (yA - yP);
         resB = (xB - xP) * (yC - yB) - (xC - xB) * (yB - yP);
         resC = (xC - xP) * (yA - yC) - (xA - xC) * (yC - yP);

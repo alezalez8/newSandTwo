@@ -21,6 +21,7 @@ public class Test2 {
         students.add(st4);
         students.add(st5);
 
+
         /*students.stream().sorted(Comparator.comparingInt(Student::getAge)).forEach(System.out::println);
         System.out.println("=================================");
 
@@ -33,14 +34,26 @@ public class Test2 {
 
         students.stream().sorted(Comparator.comparing(Student::getCourse)).distinct().forEach(System.out::println);*/
 
-        students.stream().map(element -> {
+        Student first =  students.stream().map(element -> {
+                    element.setName(element.getName().toUpperCase());
+                    return element;
+                })
+                .filter( element -> element.getSex()=='f')
+                //.sorted(Comparator.comparing(a -> a.getAge()))
+                .sorted(Comparator.comparingInt(Student::getAge))       // .sorted((a,b) -> a.getAge() - b.getAge())
+                .findFirst().get();
+
+        System.out.println(first);
+
+
+        /*students.stream().map(element -> {
             element.setName(element.getName().toUpperCase());
             return element;
         })
                 .filter( element -> element.getSex()=='f')
                 //.sorted(Comparator.comparing(a -> a.getAge()))
                 .sorted(Comparator.comparingInt(Student::getAge))       // .sorted((a,b) -> a.getAge() - b.getAge())
-                .forEach(System.out::println);
+                .forEach(System.out::println);*/
 
        /* students.stream().filter(element -> element.getSex()=='f')
                 .sorted(Comparable<Student>.to)
