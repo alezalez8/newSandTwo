@@ -8,7 +8,7 @@ public class VolatEx2 {
         Thread tr1 = new Thread(new Runnable() {
             public synchronized void increment() {
                 //VolatEx2.vol++;
-                Counter.vol++;
+                Counter1.vol++;
             }
 
             @Override
@@ -23,7 +23,7 @@ public class VolatEx2 {
         Thread tr2 = new Thread(new Runnable() {
             public synchronized void decrement() {
                 //VolatEx2.vol--;
-                Counter.vol--;
+                Counter1.vol--;
             }
 
             @Override
@@ -44,14 +44,14 @@ public class VolatEx2 {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("Volume is " + Counter.vol);
+        System.out.println("Volume is " + Counter1.vol);
 
 
     }
 
 }
 
-class Counter {
+class Counter1 {
     volatile static int vol = 0;
 }
 
