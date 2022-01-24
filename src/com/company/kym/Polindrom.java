@@ -7,8 +7,10 @@ public class Polindrom {
         int min = 99999;
         int max = 999999;
 
+
         Scanner sc = new Scanner(System.in);
         int numb;
+        System.out.print("a" + ("1" + 1) + (0 + 3) + 'h');
         System.out.println("Введите шестизначное число: ");
         numb = sc.nextInt();
         if (min < numb && numb <= max) {
