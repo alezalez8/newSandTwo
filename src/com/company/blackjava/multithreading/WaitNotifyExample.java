@@ -6,19 +6,16 @@ public class WaitNotifyExample {
         Market market = new Market();
         Producer producer = new Producer(market);
         Consumer consumer = new Consumer(market);
-        Thread thread1 = new Thread(producer);
         Thread thread2 = new Thread(consumer);
+        Thread thread1 = new Thread(producer);
 
         thread1.start();
         thread2.start();
-
     }
 }
 
-
 class Market {
     private int breadCount = 0;
-
     public synchronized void getBread() {
         while (breadCount < 1) {
             try {
