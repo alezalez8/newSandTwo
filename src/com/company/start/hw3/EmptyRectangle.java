@@ -5,11 +5,8 @@ import java.util.Scanner;
 public class EmptyRectangle {
     public static void main(String[] args) {
 
-
         int high;
         int length;
-        int lowBound = 4;
-        int highBond = 16;
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please input high of rectangle");
@@ -18,7 +15,15 @@ public class EmptyRectangle {
         length = scanner.nextInt();
 
         for (int i = 0; i < high; i++) {
-
+            for (int j = 1; j <= length; j++) {
+                if (i == 0 || i == high - 1
+                        || j == 1 || j == length) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
         }
     }
 }
