@@ -13,6 +13,7 @@ public class EmptyRectangle {
         high = scanner.nextInt();
         System.out.println("Please input length of rectangle");
         length = scanner.nextInt();
+        scanner.close();
 
         for (int i = 0; i < high; i++) {
             for (int j = 1; j <= length; j++) {

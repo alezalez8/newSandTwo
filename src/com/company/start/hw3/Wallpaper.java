@@ -12,6 +12,7 @@ public class Wallpaper {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please input  amount of columns");
         numberOfColumns = scanner.nextInt();
+        scanner.close();
 
         if (numberOfColumns > 0) {
             for (int i = 0; i < numerOfLines; i++) {

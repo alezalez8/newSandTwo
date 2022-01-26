@@ -12,6 +12,7 @@ public class Factorial {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please input  number");
         inputNumber = scanner.nextInt();
+        scanner.close();
 
         if (lowBound < inputNumber && highBond > inputNumber) {
             for (int i = 1; i <= inputNumber; i++) {
