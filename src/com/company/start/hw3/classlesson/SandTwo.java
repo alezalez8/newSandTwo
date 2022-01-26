@@ -1,4 +1,4 @@
-package com.company.start.hw3;
+package com.company.start.hw3.classlesson;
 
 import java.util.Scanner;
 
