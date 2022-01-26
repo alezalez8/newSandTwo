@@ -1,50 +1,32 @@
 package com.company.start.hw3;
 
+import java.util.Scanner;
+
 public class SandOne {
     public static void main(String[] args) {
+        int figureHeight;
+        int numberOfStars = 1;
 
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please input height of figure");
+        figureHeight = sc.nextInt();
+        sc.close();
 
-        int high = 3;
-        int countStars = 1;
-        boolean direction = true;
-        int temp = 1;
+        for (int i = 1; i <= figureHeight; i++) {
 
-
-        for (int i = 1; i <= high; i++) {
-
-            if (i == high) {
-                direction = false;
-              // countStars = high - 2;
-               // i = 0;
-              //  System.out.println();
-            }
             System.out.print("*");
-//----------------------------------------------
-            if (i == countStars && direction) {
+            if (i == numberOfStars) {
                 System.out.println();
                 i = 0;
-                countStars++;
+                numberOfStars++;
             }
-
-//-----------------------------------------------
-
-            if (!direction) {
-
-                if (i == countStars ) {
-                    System.out.println();
-                   // countStars--;
-                    i= 0;
-
-                   // countStars--;
-                }
-
-                // countStars = 5;
-                // i = 5;
-
-
+            if (i == figureHeight) {
+                System.out.println();
+                figureHeight--;
+                i = 0;
             }
-
-
         }
     }
 }
+
+
