@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Factorial {
     public static void main(String[] args) {
         int inputNumber;
-        int factorial = 1;
+        long factorial = 1;
         int lowBound = 4;
         int highBond = 16;
 

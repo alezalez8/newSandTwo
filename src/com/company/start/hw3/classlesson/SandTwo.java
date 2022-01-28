@@ -12,14 +12,16 @@ public class SandTwo {
         sc.close();
 
 
-        int b = 1;
+        int numberOfStars = 1;
+
+
 
 
         for (int i = 1; i <= height; ++i) {
             System.out.print("*");
-            if (b <= i && b < height) {
+            if (numberOfStars <= i && numberOfStars < height) {
                 System.out.println();
-                b++;
+                numberOfStars++;
                 i = 0;
             }
             if (height == i) {

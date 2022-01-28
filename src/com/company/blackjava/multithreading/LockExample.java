@@ -21,9 +21,16 @@ public class LockExample {
                 call.whatsupCall();
             }
         });
+        thread2.setDaemon(true);
+        thread3.setDaemon(true);
         thread1.start();
         thread2.start();
         thread3.start();
+        System.out.println("Thread 1 :  " + thread1.getState());
+        System.out.println("Thread 1 daemon :  " + thread1.isDaemon());
+        System.out.println("Thread 2 :  " + thread2.getState());
+        System.out.println("Thread 2  daemon:  " + thread2.isDaemon());
+        System.out.println("Thread 3 :  " + thread3.getState());
 
 
     }
