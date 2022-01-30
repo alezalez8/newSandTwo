@@ -17,9 +17,9 @@ public class FileWritterEx {
         "\\test2.txt");
         System.out.println(file.getFreeSpace());
 
-        FileWriter writer = null;
-        try {
-            writer = new FileWriter(file, true);
+        //FileWriter writer = null;
+        try ( FileWriter writer = new FileWriter(file, true) ){
+           // writer = new FileWriter(file, true);
           //  for (int i = 0; i < rubai.length(); i++) {
               //  writer.write(rubai.charAt(i));
                 writer.write(rubai);
@@ -28,8 +28,6 @@ public class FileWritterEx {
             System.out.println("Done");
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            writer.close();
         }
         System.out.println(file.getFreeSpace());
 
