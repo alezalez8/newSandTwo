@@ -21,6 +21,5 @@ public class SumOfSymbols {
             }
         }
         System.out.println("Amount of char 'b' is " + sumOfChar);
-
     }
 }

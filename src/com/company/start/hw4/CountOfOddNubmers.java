@@ -12,6 +12,5 @@ public class CountOfOddNubmers {
             }
         }
         System.out.println("Amount of odd numbers is " + summOdd);
-
     }
 }
