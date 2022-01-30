@@ -8,6 +8,7 @@ public class TestTwo {
 
     public static void main(String[] args) {
 
+
         PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
         priorityQueue.add(4);
         priorityQueue.add(1);
