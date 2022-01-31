@@ -25,7 +25,7 @@ public class NumberToStringMoneyConverter {
         Map<String, String>  dozensNumber = new HashMap<>();
         Map<String, String>  eleven_ninethNumber = new HashMap<>();
 
-        unitsNumber.put("0", " ");
+        unitsNumber.put("0", "");
         unitsNumber.put("1", "one");
         unitsNumber.put("2", "two");
         unitsNumber.put("3", "three");
@@ -34,7 +34,8 @@ public class NumberToStringMoneyConverter {
         unitsNumber.put("6", "six");
         unitsNumber.put("7", "seven");
         unitsNumber.put("8", "eight");
-        unitsNumber.put("9", "ten");
+        unitsNumber.put("9", "nine");
+        unitsNumber.put("10", "ten");
 
         dozensNumber.put("2","twenty");
         dozensNumber.put("3","thirty");
