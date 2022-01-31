@@ -1,12 +1,5 @@
 package com.company.start.hw4;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 public class NumberToStringMoneyConverter {
 
     public static void main(String[] args) {
@@ -15,15 +8,89 @@ public class NumberToStringMoneyConverter {
         int[] arrayNumbers2;
         char[] chWholeNumber;
         char[] chFractionalNumber;
-        String hundr = "hundred";
+        String hundr = " hundred(s)";
         String sousand = "sousand";
         String dollars = "dollars";
 
         String wholeNumber;
         String fractionalNumber;
+
+        String[] unitsNumbers = {"", "one", "two", "three", "four", "five",
+                "six", "seven", "eight", "nine"};
+        String[] tenNinethNumbers = {"ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
+                "sixteen", "seventeen", "eighteen", "nineteen"};
+        String[] dozenNumbers = {"","", "twenty", "thirty", "forty", "fifty",
+                "sixty", "seventy", "eighty", "ninety"};
+
+//-------------------- нужное, не удалять
+/*
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Input number");
+        String inputNumber = scanner.nextLine();
+        //double mmm = scanner.nextDouble();
+
+        scanner.close();
+        // String textMoney = String.format("%.2f",mmm);
+        // System.out.println("Text money =  " + textMoney);
+
+        String[] arrayNumber = inputNumber.split("[,.]");
+        wholeNumber = arrayNumber[0];
+        if (arrayNumber.length > 1) {
+            fractionalNumber = arrayNumber[1];
+        } else {
+            fractionalNumber = "";
+        }
+
+
+
+        List<Integer> arraOne = Stream.of(wholeNumber).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
+        System.out.println("List = " + arraOne);
+*/
+//---------------------
+
+       String[] threeNum = new String[]{"3", "5", "9"};
+       // String[] threeNum = new String[]{"0", "5", "0"};  // no pass
+        //String[] threeNum = new String[]{"0", "1", "0"};  // no pass
+       // String[] threeNum = new String[]{"0", "1", "8"};  // no pass
+       // String[] threeNum = new String[]{"1", "2", "9"};
+        //String[] threeNum = new String[]{"3", "1", "4"};
+       // String[] threeNum = new String[]{"3", "5", "9"};
+        //String[] threeNum = new String[]{"3", "5", "0"};  // no pass
+
+        String outNumber = "";
+
+
+        if (Integer.parseInt(threeNum[0]) > 0) {                 // если старший разряд не равен нулю, то выводим его
+            outNumber = unitsNumbers[Integer.parseInt(threeNum[0])] + hundr + " ";  // " five hundreds" for example
+        }
+        //  --- если второй и третий элемент - от 10 до 19
+        if (Integer.parseInt(threeNum[1]) == 1) {
+
+           // int tenNines = Integer.parseInt(threeNum[1] + threeNum[2]);
+            outNumber = outNumber + tenNinethNumbers[Integer.parseInt(threeNum[2])] + " ";
+
+        } else {
+            outNumber = outNumber + dozenNumbers[Integer.parseInt(threeNum[1])] +
+                    " " +
+                    unitsNumbers[Integer.parseInt(threeNum[2])];
+        }
+        System.out.println("Your number is : " + outNumber);
+
+        // ch = inputNumber.toCharArray();
+        // print(ch);
+
+        // System.out.println(wholeNumber);
+        // System.out.println(fractionalNumber);
+
+    }
+
+}
+
+/*
         Map<String, String>  unitsNumber = new HashMap<>();
         Map<String, String>  dozensNumber = new HashMap<>();
         Map<String, String>  eleven_ninethNumber = new HashMap<>();
+
 
         unitsNumber.put("0", "");
         unitsNumber.put("1", "one");
@@ -55,45 +122,6 @@ public class NumberToStringMoneyConverter {
         eleven_ninethNumber.put("17", "seventeen");
         eleven_ninethNumber.put("18", "eighteen");
         eleven_ninethNumber.put("19", "nineteen");
+*/
 
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Input number");
-        String inputNumber = scanner.nextLine();
-        //double mmm = scanner.nextDouble();
-
-        scanner.close();
-       // String textMoney = String.format("%.2f",mmm);
-       // System.out.println("Text money =  " + textMoney);
-
-        String[] arrayNumber = inputNumber.split("[,.]");
-        wholeNumber = arrayNumber[0];
-        if (arrayNumber.length > 1) {
-            fractionalNumber = arrayNumber[1];
-        } else {
-            fractionalNumber = "";
-        }
-
-        List<Integer> arraOne = Stream.of(wholeNumber).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
-        System.out.println("List = " + arraOne);
-
-
-        // ch = inputNumber.toCharArray();
-        // print(ch);
-
-        System.out.println(wholeNumber);
-        System.out.println(fractionalNumber);
-
-
-    }
-
-
-    static void printChar(char[] chars) {
-        for (char el : chars
-        ) {
-            System.out.print(el + "  ");
-        }
-        System.out.println();
-    }
-}
 
