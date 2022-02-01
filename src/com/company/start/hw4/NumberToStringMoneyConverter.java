@@ -1,5 +1,10 @@
 package com.company.start.hw4;
 
+import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class NumberToStringMoneyConverter {
 
     public static void main(String[] args) {
@@ -8,9 +13,9 @@ public class NumberToStringMoneyConverter {
         int[] arrayNumbers2;
         char[] chWholeNumber;
         char[] chFractionalNumber;
-        String hundr = " hundred(s)";
-        String sousand = "sousand";
-        String dollars = "dollars";
+        String hundr = " hundred";
+        String sousand = "thousand";
+        String dollars = "dollar(s)";
 
         String wholeNumber;
         String fractionalNumber;
@@ -23,7 +28,6 @@ public class NumberToStringMoneyConverter {
                 "sixty", "seventy", "eighty", "ninety"};
 
 //-------------------- нужное, не удалять
-/*
         Scanner scanner = new Scanner(System.in);
         System.out.println("Input number");
         String inputNumber = scanner.nextLine();
@@ -32,7 +36,7 @@ public class NumberToStringMoneyConverter {
         scanner.close();
         // String textMoney = String.format("%.2f",mmm);
         // System.out.println("Text money =  " + textMoney);
-
+// ------------------------разложили на два массива стрингов до и после запятой с проверкой сущесвования дробной части
         String[] arrayNumber = inputNumber.split("[,.]");
         wholeNumber = arrayNumber[0];
         if (arrayNumber.length > 1) {
@@ -40,13 +44,27 @@ public class NumberToStringMoneyConverter {
         } else {
             fractionalNumber = "";
         }
+// ----------------------конец блока
+        if ((wholeNumber.length() % 3) != 0) {
+          //  if()
+        }
 
 
+/*
+        List<Integer> arrayLeft = Stream.of(wholeNumber).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
+        List<Integer> arrayRight = Stream.of(fractionalNumber).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
+        if(arrayLeft.size() % 3 != 0) {
+        for(int i = 0; i < arrayLeft.size() % 3; i++) {
+        arrayLeft.add(0, 0);
+        }
 
-        List<Integer> arraOne = Stream.of(wholeNumber).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
-        System.out.println("List = " + arraOne);
-*/
+        }
+        System.out.println("List = " + arrayLeft);
+        System.out.println("get i " + arrayLeft.get(5));*/
 //---------------------
+
+
+
 
        String[] threeNum = new String[]{"0", "0", "1"};
         //String[] threeNum = new String[]{"3", "5", "9"};
@@ -61,7 +79,7 @@ public class NumberToStringMoneyConverter {
         String outNumber = "";
 
 
-        if (Integer.parseInt(threeNum[0]) > 0) {                 // если старший разряд не равен нулю, то выводим его
+        if (threeNum[0] == null || Integer.parseInt(threeNum[0]) > 0 ) {                 // если старший разряд не равен нулю, то выводим его
             outNumber = unitsNumbers[Integer.parseInt(threeNum[0])] + hundr + " ";  // " five hundreds" for example
         }
         //  --- если второй и третий элемент - от 10 до 19
