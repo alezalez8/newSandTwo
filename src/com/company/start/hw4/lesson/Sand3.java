@@ -5,7 +5,8 @@ import java.util.Arrays;
 public class Sand3 {
     public static void main(String[] args) {
         // String[] source = {"1", "2", "3", "4", "5"};
-        String[] source = {"1", "2", "3"};
+       // String[] source = {"1", "2", "3"};
+        String[] source = {};
         String[] destination = null;
         int numberOfTriad = 0;
 

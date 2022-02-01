@@ -1,5 +1,6 @@
 package com.company.start.hw4;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -16,9 +17,12 @@ public class NumberToStringMoneyConverter {
         String hundr = " hundred";
         String sousand = "thousand";
         String dollars = "dollar(s)";
+        String[] wholeNumberofTriad = null;
+        int sizeOfWholeNumberTriad = 0;
+        String[] wholeNumber;
+        String[] fractionalNumber;
+        int sizeOfWholeNumber = 0;
 
-        //String wholeNumber;
-        // String fractionalNumber;
 
         String[] unitsNumbers = {"", "one", "two", "three", "four", "five",
                 "six", "seven", "eight", "nine"};
@@ -33,11 +37,10 @@ public class NumberToStringMoneyConverter {
         String inputNumber = scanner.nextLine();
         scanner.close();
 
-// ------------------------разложили на два массива стрингов до и после запятой с проверкой сущесвования дробной части
-        String[] wholeNumber = null;
-        String[] fractionalNumber;
-        String[] arrayNumber = inputNumber.split("[,.]");
+// ------------------------разложили на два массива стрингов до и после запятой с проверкой существования дробной части
+         String[] arrayNumber = inputNumber.split("[,.]");
         wholeNumber = arrayNumber[0].split("");
+        sizeOfWholeNumber = wholeNumber.length;
         if (arrayNumber.length > 1) {
             fractionalNumber = arrayNumber[1].split("");
         } else {
@@ -45,20 +48,22 @@ public class NumberToStringMoneyConverter {
         }
 // ----------------------конец блока
 
+        System.out.println("Whole part is " + Arrays.toString(wholeNumber));
+        System.out.println("Fractional part is " + Arrays.toString(fractionalNumber));
+
 // -----------------------  дополняем основной массив до кол-ва, кратное 3:
-   /*     int sizeOfWholeNumber = wholeNumber.length();
-        String[] wholeNumberofTriad = null;
         if (sizeOfWholeNumber % 3 != 0) {
-            sizeOfWholeNumber = wholeNumber.length() + 3 - wholeNumber.length() % 3;
-            wholeNumberofTriad = new String[sizeOfWholeNumber];
+            sizeOfWholeNumberTriad = sizeOfWholeNumber + 3 - sizeOfWholeNumber % 3;
+            wholeNumberofTriad = new String[sizeOfWholeNumberTriad];
             System.arraycopy(wholeNumber, 0, wholeNumberofTriad,
-                    wholeNumberofTriad.length - wholeNumber.length(), wholeNumberofTriad.length);
+                    (sizeOfWholeNumberTriad - sizeOfWholeNumber), wholeNumber.length);
         } else {
             wholeNumberofTriad = wholeNumber;
         }
-      */
 
+ //  ---------------- конец блока дополнения массива до числа, кратного трем
 
+        System.out.println("Array added 3:  " + Arrays.toString(wholeNumberofTriad));
 /*
         List<Integer> arrayLeft = Stream.of(wholeNumber).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
         List<Integer> arrayRight = Stream.of(fractionalNumber).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
@@ -85,8 +90,10 @@ public class NumberToStringMoneyConverter {
 
         String outNumber = "";
 
+        // ------------------------- блок обработки триады -------------------------------------
 
-        if (threeNum[0] == null || Integer.parseInt(threeNum[0]) > 0) {                 // если старший разряд не равен нулю, то выводим его
+
+        if (Integer.parseInt(threeNum[0]) > 0) {                 // если старший разряд не равен нулю, то выводим его
             outNumber = unitsNumbers[Integer.parseInt(threeNum[0])] + hundr + " ";  // " five hundreds" for example
         }
         //  --- если второй и третий элемент - от 10 до 19
@@ -107,7 +114,7 @@ public class NumberToStringMoneyConverter {
 
         // System.out.println(wholeNumber);
         // System.out.println(fractionalNumber);
-
+// --------------------------------------конец блока обработки триады -----------------------------------
     }
 
 }
