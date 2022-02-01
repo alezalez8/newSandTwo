@@ -1,5 +1,6 @@
 package com.company.start.hw4;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class NumberToLiteral {
@@ -8,13 +9,15 @@ public class NumberToLiteral {
         String hundr = " hundred ";
         String thousand = " thousand ";
         String million = " million ";
-        String dollars = " dollar(s)";
+        String dollars = " dollar(s) ";
+        String cents = " cent(s)";
+        String outNumber = "";
+        String outNumbreFract = "";
         String[] wholeNumberofTriad = null;
         int sizeOfWholeNumberTriad = 0;
         String[] wholeNumber;
         String[] fractionalNumber;
         int sizeOfWholeNumber = 0;
-
 
         String[] unitsNumbers = {"", "one", "two", "three", "four", "five",
                 "six", "seven", "eight", "nine"};
@@ -25,11 +28,13 @@ public class NumberToLiteral {
 
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Input number");
+        System.out.println("How much money do you have?");
         //String inputNumber = scanner.nextLine();
         scanner.close();
 
-        String inputNumber = "123457890.45";
+        String inputNumber = "123457890,9";
+
+        //String inputNumber = "0.5";
 
 
 // ------------------------разложили на два массива стрингов до и после запятой с проверкой существования дробной части
@@ -43,8 +48,8 @@ public class NumberToLiteral {
         }
 // ----------------------конец блока
         System.out.println(inputNumber);
-        //System.out.println("Whole part is " + Arrays.toString(wholeNumber));
-        // System.out.println("Fractional part is " + Arrays.toString(fractionalNumber));
+        System.out.println("Whole part is " + Arrays.toString(wholeNumber));
+        System.out.println("Fractional part is " + Arrays.toString(fractionalNumber));
         System.out.println();
 
 // -----------------------  дополняем основной массив до кол-ва, кратное 3:
@@ -58,11 +63,6 @@ public class NumberToLiteral {
             sizeOfWholeNumberTriad = wholeNumber.length;
         }
 
-        //  ---------------- конец блока дополнения массива до числа, кратного трем
-
-
-        String outNumber = "";
-        // ------------------------- блок обработки триады -------------------------------------
         int temp = sizeOfWholeNumberTriad;
         for (int i = 0; i < sizeOfWholeNumberTriad; i += 3) {
             if (wholeNumberofTriad[i] != null && Integer.parseInt(wholeNumberofTriad[i]) > 0) {
@@ -73,8 +73,7 @@ public class NumberToLiteral {
             } else {
                 if (wholeNumberofTriad[i + 1] != null) {
                     outNumber = outNumber + dozenNumbers[Integer.parseInt(wholeNumberofTriad[i + 1])] +
-                            " " +
-                            unitsNumbers[Integer.parseInt(wholeNumberofTriad[i + 2])];
+                            " " + unitsNumbers[Integer.parseInt(wholeNumberofTriad[i + 2])];
                 } else {
                     outNumber = outNumber + unitsNumbers[Integer.parseInt(wholeNumberofTriad[i + 2])];
                 }
@@ -87,13 +86,35 @@ public class NumberToLiteral {
             }
             temp -= 3;
         }
+        //------------------------------------------------------
 
+        if (fractionalNumber != null) {
 
-// --------------------------------------конец блока обработки триады -----------------------------------
-        System.out.println("Total number is : " + outNumber + dollars);
+            if (fractionalNumber.length == 2) {
+                if (Integer.parseInt(fractionalNumber[0]) == 1) {
+                    outNumbreFract = tenNinethNumbers[Integer.parseInt(fractionalNumber[1])];
+                } else if (fractionalNumber[0] != null) {
+                    outNumbreFract = dozenNumbers[Integer.parseInt(fractionalNumber[0])] +
+                            " " + unitsNumbers[Integer.parseInt(fractionalNumber[1])];
+                } else {
+                    outNumbreFract = unitsNumbers[Integer.parseInt(fractionalNumber[1])];
+                }
+            } else {
+                if (fractionalNumber.length == 1) {
+                    if (Integer.parseInt(fractionalNumber[0]) == 1) {
+                        outNumbreFract = tenNinethNumbers[0];
+                    } else {
+                        outNumbreFract = dozenNumbers[Integer.parseInt(fractionalNumber[0])];
+                    }
+                }
+            }
+        }
+        if (outNumber.length() != 0) {
+            outNumber += dollars;
+
+        }
+
+        System.out.println("You have : " + outNumber + outNumbreFract + cents);
 
     }
-
 }
-
-
