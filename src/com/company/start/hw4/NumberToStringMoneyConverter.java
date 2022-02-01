@@ -17,37 +17,46 @@ public class NumberToStringMoneyConverter {
         String sousand = "thousand";
         String dollars = "dollar(s)";
 
-        String wholeNumber;
-        String fractionalNumber;
+        //String wholeNumber;
+        // String fractionalNumber;
 
         String[] unitsNumbers = {"", "one", "two", "three", "four", "five",
                 "six", "seven", "eight", "nine"};
         String[] tenNinethNumbers = {"ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
                 "sixteen", "seventeen", "eighteen", "nineteen"};
-        String[] dozenNumbers = {"","", "twenty", "thirty", "forty", "fifty",
+        String[] dozenNumbers = {"", "", "twenty", "thirty", "forty", "fifty",
                 "sixty", "seventy", "eighty", "ninety"};
 
-//-------------------- нужное, не удалять
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Input number");
         String inputNumber = scanner.nextLine();
-        //double mmm = scanner.nextDouble();
-
         scanner.close();
-        // String textMoney = String.format("%.2f",mmm);
-        // System.out.println("Text money =  " + textMoney);
+
 // ------------------------разложили на два массива стрингов до и после запятой с проверкой сущесвования дробной части
+        String[] wholeNumber = null;
+        String[] fractionalNumber;
         String[] arrayNumber = inputNumber.split("[,.]");
-        wholeNumber = arrayNumber[0];
+        wholeNumber = arrayNumber[0].split("");
         if (arrayNumber.length > 1) {
-            fractionalNumber = arrayNumber[1];
+            fractionalNumber = arrayNumber[1].split("");
         } else {
-            fractionalNumber = "";
+            fractionalNumber = null;
         }
 // ----------------------конец блока
-        if ((wholeNumber.length() % 3) != 0) {
-          //  if()
+
+// -----------------------  дополняем основной массив до кол-ва, кратное 3:
+   /*     int sizeOfWholeNumber = wholeNumber.length();
+        String[] wholeNumberofTriad = null;
+        if (sizeOfWholeNumber % 3 != 0) {
+            sizeOfWholeNumber = wholeNumber.length() + 3 - wholeNumber.length() % 3;
+            wholeNumberofTriad = new String[sizeOfWholeNumber];
+            System.arraycopy(wholeNumber, 0, wholeNumberofTriad,
+                    wholeNumberofTriad.length - wholeNumber.length(), wholeNumberofTriad.length);
+        } else {
+            wholeNumberofTriad = wholeNumber;
         }
+      */
 
 
 /*
@@ -64,28 +73,26 @@ public class NumberToStringMoneyConverter {
 //---------------------
 
 
-
-
-       String[] threeNum = new String[]{"0", "0", "1"};
+        String[] threeNum = new String[]{"0", "0", "1"};
         //String[] threeNum = new String[]{"3", "5", "9"};
-       // String[] threeNum = new String[]{"0", "5", "0"};  // no pass
+        // String[] threeNum = new String[]{"0", "5", "0"};  // no pass
         //String[] threeNum = new String[]{"0", "1", "0"};  // no pass
-       // String[] threeNum = new String[]{"0", "1", "8"};  // no pass
-       // String[] threeNum = new String[]{"1", "2", "9"};
+        // String[] threeNum = new String[]{"0", "1", "8"};  // no pass
+        // String[] threeNum = new String[]{"1", "2", "9"};
         //String[] threeNum = new String[]{"3", "1", "4"};
-       // String[] threeNum = new String[]{"3", "5", "9"};
+        // String[] threeNum = new String[]{"3", "5", "9"};
         //String[] threeNum = new String[]{"3", "5", "0"};  // no pass
 
         String outNumber = "";
 
 
-        if (threeNum[0] == null || Integer.parseInt(threeNum[0]) > 0 ) {                 // если старший разряд не равен нулю, то выводим его
+        if (threeNum[0] == null || Integer.parseInt(threeNum[0]) > 0) {                 // если старший разряд не равен нулю, то выводим его
             outNumber = unitsNumbers[Integer.parseInt(threeNum[0])] + hundr + " ";  // " five hundreds" for example
         }
         //  --- если второй и третий элемент - от 10 до 19
         if (Integer.parseInt(threeNum[1]) == 1) {
 
-           // int tenNines = Integer.parseInt(threeNum[1] + threeNum[2]);
+            // int tenNines = Integer.parseInt(threeNum[1] + threeNum[2]);
             outNumber = outNumber + tenNinethNumbers[Integer.parseInt(threeNum[2])] + " ";
 
         } else {
