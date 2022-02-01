@@ -48,7 +48,8 @@ public class NumberToStringMoneyConverter {
 */
 //---------------------
 
-       String[] threeNum = new String[]{"3", "5", "9"};
+       String[] threeNum = new String[]{"0", "0", "1"};
+        //String[] threeNum = new String[]{"3", "5", "9"};
        // String[] threeNum = new String[]{"0", "5", "0"};  // no pass
         //String[] threeNum = new String[]{"0", "1", "0"};  // no pass
        // String[] threeNum = new String[]{"0", "1", "8"};  // no pass
