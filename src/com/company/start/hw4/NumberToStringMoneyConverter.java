@@ -37,7 +37,7 @@ public class NumberToStringMoneyConverter {
         //String inputNumber = scanner.nextLine();
         scanner.close();
 
-        String inputNumber = "1123.45";
+        String inputNumber = "1234.45";
 
 
 // ------------------------разложили на два массива стрингов до и после запятой с проверкой существования дробной части
@@ -67,7 +67,7 @@ public class NumberToStringMoneyConverter {
 
         //  ---------------- конец блока дополнения массива до числа, кратного трем
 
-      //  System.out.println("Array added 3:  " + Arrays.toString(wholeNumberofTriad));
+        //  System.out.println("Array added 3:  " + Arrays.toString(wholeNumberofTriad));
 /*
         List<Integer> arrayLeft = Stream.of(wholeNumber).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
         List<Integer> arrayRight = Stream.of(fractionalNumber).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
@@ -82,7 +82,7 @@ public class NumberToStringMoneyConverter {
 //---------------------
 
 
-       // String[] threeNum = new String[]{"0", "0", "1"};
+        // String[] threeNum = new String[]{"0", "0", "1"};
         //String[] threeNum = new String[]{"3", "5", "9"};
         // String[] threeNum = new String[]{"0", "5", "0"};  // no pass
         //String[] threeNum = new String[]{"0", "1", "0"};  // no pass
@@ -105,7 +105,7 @@ public class NumberToStringMoneyConverter {
                 outNumber = unitsNumbers[Integer.parseInt(wholeNumberofTriad[i])] + hundr + " ";  // " five hundreds" for example
             }
             //  --- если второй и третий элемент - от 10 до 19
-            if (wholeNumberofTriad[i + 1] != null && Integer.parseInt(wholeNumberofTriad[i + 1]) == 1 ) {
+            if (wholeNumberofTriad[i + 1] != null && Integer.parseInt(wholeNumberofTriad[i + 1]) == 1) {
 
                 // int tenNines = Integer.parseInt(threeNum[1] + threeNum[2]);
                 outNumber = outNumber + tenNinethNumbers[Integer.parseInt(wholeNumberofTriad[i + 2])] + " ";
@@ -115,9 +115,11 @@ public class NumberToStringMoneyConverter {
                     outNumber = outNumber + dozenNumbers[Integer.parseInt(wholeNumberofTriad[i + 1])] +
                             " " +
                             unitsNumbers[Integer.parseInt(wholeNumberofTriad[i + 2])];
+                } else {
+                    outNumber = outNumber + unitsNumbers[Integer.parseInt(wholeNumberofTriad[i + 2])] + " millons ";
                 }
             }
-            System.out.println("Your number is : " + outNumber);
+            System.out.print("Your number is : " + outNumber);
 
             // ch = inputNumber.toCharArray();
             // print(ch);
@@ -126,6 +128,7 @@ public class NumberToStringMoneyConverter {
             // System.out.println(fractionalNumber);
 // --------------------------------------конец блока обработки триады -----------------------------------
         }
+        System.out.println("Total number is : " + outNumber);
 
     }
 
