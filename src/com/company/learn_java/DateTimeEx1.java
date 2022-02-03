@@ -11,8 +11,13 @@ public class DateTimeEx1 {
         Duration dur = Duration.ofHours(5);
         LocalTime localTime = LocalTime.of(15, 20);
         System.out.println(localTime);
-        localTime = localTime.plus(dur);
+        //localTime = localTime.plus(dur);
+       // System.out.println(localTime);
+        Duration dur2 = Duration.ofMinutes(35);
+        localTime = localTime.plus(dur2).plus(dur);
         System.out.println(localTime);
+
+
 
        // ld = ld.plusDays(1600).minusYears(3);
         // System.out.println(ld.isBefore(ld2));
