@@ -1,43 +1,22 @@
 package com.company.learn_java;
 
 import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 public class DateTimeEx1 {
     public static void main(String[] args) {
 
-        LocalDate ld = LocalDate.of(2022, 1, 22);
-        LocalDate ld2 = LocalDate.of(2022, 2, 25);
-        System.out.println(ld);
-        Duration dur = Duration.ofHours(5);
-        LocalTime localTime = LocalTime.of(15, 20);
+        LocalTime localTime = LocalTime.of(15, 30);
+        LocalDate localDate = LocalDate.of(2022, 1, 20);
+        System.out.println(localDate);
+        DateTimeFormatter formatter1 = DateTimeFormatter.ISO_LOCAL_DATE;
+        System.out.println(localDate.format(formatter1));
+        DateTimeFormatter formatter2 = DateTimeFormatter.ISO_LOCAL_TIME;
         System.out.println(localTime);
-        //localTime = localTime.plus(dur);
-       // System.out.println(localTime);
-        Duration dur2 = Duration.ofMinutes(35);
-        localTime = localTime.plus(dur2).plus(dur);
-        System.out.println(localTime);
-
-
-
-       // ld = ld.plusDays(1600).minusYears(3);
-        // System.out.println(ld.isBefore(ld2));
-
-        System.out.println();
-
-
-
-
-
-       /* LocalDate ld2 = LocalDate.of(2022, Month.JANUARY, 12);
-        System.out.println(ld2);
-        System.out.println(Month.MARCH.getValue());
-        LocalTime localTime = LocalTime.of(12, 45, 00);
-        System.out.println(localTime);
-        System.out.println("---------------------------");
-
-        LocalDateTime time = LocalDateTime.of(ld, localTime);
-        System.out.println(time);*/
-
+        System.out.println(localTime.format(formatter2));
+        DateTimeFormatter formatter3 = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+        System.out.println(localTime.format(formatter3));
 
 
     }
