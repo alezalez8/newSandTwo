@@ -3,15 +3,22 @@ package com.company.start.hw5.lesson6;
 public class Main {
 
     public static void main(String[] args) {
-        long fact = factorialCalculate(14);
-        System.out.println(fact);
-    }
+       /* int size = 2;
+        for (; size > 0; ) {
+            System.out.println(size);
 
-    public static long factorialCalculate(int f) {
-        long fact = 1;
-        for (int i = 1; i <= f; i++) {
-            fact *= i;
-        }
-        return fact;
+            size--;
+        }*/
+        Integer a = 1;
+        Integer b = 0;
+        System.out.println(a ^ b);
+int x = 117;
+int y = 17;
+
+        System.out.println(x ^ y);
+
+
+
+
     }
 }
