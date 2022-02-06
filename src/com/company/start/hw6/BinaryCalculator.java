@@ -10,6 +10,5 @@ public class BinaryCalculator {
         binary = scanner.nextInt(2);
         scanner.close();
         System.out.println("Dec value is: " + binary);
-
     }
 }

@@ -1,6 +1,7 @@
 package com.company.start.hw6;
 
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 public class DistanceOfHemming {
     public static void main(String[] args) {
@@ -23,6 +24,8 @@ public class DistanceOfHemming {
         int result = 0;
         int isklIli = n ^ m;
         String[] binaryNumber = Integer.toBinaryString(isklIli).split("");
+        System.out.println("Hemming = " + Stream.of(binaryNumber).filter(x -> x.equals("1")).count());
+
         for (int i = 0; i < binaryNumber.length; i++) {
             if (binaryNumber[i].equals("1")) {
                 result++;
