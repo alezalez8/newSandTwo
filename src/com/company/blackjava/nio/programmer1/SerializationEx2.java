@@ -11,7 +11,7 @@ public class SerializationEx2 {
     public static void main(String[] args) {
         List<Employee> employees1 = new ArrayList<>();
         Car car = new Car("Hundai", "white");
-        Employee employee = new Employee("Aleks", "IT", 49,
+        Employee employee = new Employee("Aleks", "Shunin", "IT",
                 1500, car);
 
         try (ObjectOutputStream outputStream = new ObjectOutputStream(
