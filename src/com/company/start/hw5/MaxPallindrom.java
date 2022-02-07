@@ -2,9 +2,7 @@ package com.company.start.hw5;
 
 public class MaxPallindrom {
     public static void main(String[] args) {
-
         polindrom();
-
 
     }
     public static void polindrom() {
@@ -31,7 +29,7 @@ public class MaxPallindrom {
 
         }
         System.out.println("Palindrom is: " + temp);
-        System.out.println("fist number =   " + x);
+        System.out.println("first number =   " + x);
         System.out.println("second number = " + y);
     }
 }
