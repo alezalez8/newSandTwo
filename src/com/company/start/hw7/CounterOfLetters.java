@@ -8,14 +8,10 @@ public class CounterOfLetters {
 
     public static void main(String[] args) {
         String text;
-        text = reader("test15.txt");
+        text = reader("text10.txt");
         int[] stat = countChar(text);
-        System.out.println(Arrays.toString(stat));
-        // printResult(stat);
-
-
-        printResultTwo(newCounterChar(text));
-
+        //System.out.println(Arrays.toString(stat));
+        printResult(stat);
 
     }
 
@@ -53,49 +49,24 @@ public class CounterOfLetters {
     }
 
 
-    public static Map<Integer, Integer> newCounterChar(String stroka) {
-        Map<Integer, Integer> map = new TreeMap<>();
-        char[] arrayStroka = stroka.toCharArray();
-        int temp = 0;
-        int ofset = 97;
-        for (int i = 0; i < stroka.length(); i++) {
-            for (int j = 97; j < 123; j++) {
-                if (stroka.charAt(i) == (char) j) {
-                    if( map.get(j) == null)
-                    {
-                        map.put(j, 0);
-                    }
-                    temp = map.get(j) + 1;
-                    map.put(j, temp);
-                    temp = 0;
-                }
-            }
-        }
-
-
-        return map;
-    }
-
-
-    public static void printResultTwo(Map<Integer, Integer> map) {
-        for (Map.Entry<Integer, Integer> element : map.entrySet()
-        ) {
-            if (element.getValue() != null)
-                System.out.println(element.getKey() + "   " + element.getValue());
-        }
-    }
-
     public static void printResult(int[] array) {
         int ofset = 97;
+        int max = 0;
+        int current = 0;
 
-
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] != 0) {
-                System.out.printf("Letter %s present in this text %d times", (char) (i + ofset), array[i]);
-                System.out.println();
+        for (int j = 0; j < array.length; j++) {
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] > max) {
+                    max = array[i];
+                    current = i;
+                }
             }
-
+            if (array[current] != 0) {
+                System.out.printf("Letter %s :  %d times", (char) (current + ofset), array[current]);
+                System.out.println();
+                array[current] = 0;
+                max = 0;
+            }
         }
     }
-
 }
