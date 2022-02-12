@@ -11,6 +11,7 @@ public class SaveDoubleArrayToFile {
         String path = "";
         int[][] testArray = {{2, 5, 7, 8}, {45, 12, 34, 78, 22, 11}, {-23, 56, -12, 4, 88}};
 
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter path for save this array");
         path = scanner.nextLine();
