@@ -45,6 +45,25 @@ public class Phone {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Phone)) return false;
+
+        Phone phone = (Phone) o;
+        if (isRegistered != phone.isRegistered) return false;
+        if (phoneNumber != null ? !phoneNumber.equals(phone.phoneNumber) : phone.phoneNumber != null) return false;
+        return network != null ? network.equals(phone.network) : phone.network == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = phoneNumber != null ? phoneNumber.hashCode() : 0;
+        result = 31 * result + (isRegistered ? 1 : 0);
+        result = 31 * result + (network != null ? network.hashCode() : 0);
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "Phone{" +
                 "phoneNumber='" + phoneNumber + '\'' +
