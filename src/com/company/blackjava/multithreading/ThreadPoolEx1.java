@@ -15,6 +15,7 @@ public class ThreadPoolEx1 {
         for (int i = 0; i < 10; i++) {
             executorService.execute(new RunnableImp100(lock));
 
+
         }
         System.out.println("Main ends");
         //Thread.sleep(3000);
