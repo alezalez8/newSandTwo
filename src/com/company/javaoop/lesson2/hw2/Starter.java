@@ -14,6 +14,8 @@ public class Starter {
         System.out.println(cat1);
         System.out.println(cat2);
         System.out.println(dog);
+        dog.sleep();
+        cat1.eat();
         veterinarian.treatment(cat1);
         veterinarian.treatment(dog);
 

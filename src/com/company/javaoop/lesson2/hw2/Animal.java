@@ -19,10 +19,12 @@ public class Animal {
 
     }
     public void eat() {
+      //  System.out.println("I am eating now. Don't touch me!");
 
     }
 
     public void sleep() {
+      //  System.out.println("so sweety sleeping...");
 
     }
 

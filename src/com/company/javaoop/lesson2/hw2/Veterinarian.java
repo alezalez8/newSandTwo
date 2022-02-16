@@ -13,8 +13,7 @@ public class Veterinarian {
     }
 
     public void treatment(Animal animal) {
-        System.out.println("I am " + name);
-        System.out.println("If all OK, you can say something like " + "\"" + animal.getVoice() + "\"");
+        System.out.println("I am " + name + " and I want to hear your voice " + "\n\"" + animal.getVoice() + "\"");
     }
 
 
