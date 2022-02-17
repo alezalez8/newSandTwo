@@ -10,9 +10,9 @@ public class Group {
     public Group() {
     }
 
-    public Group(String groupName, Student[] students) {
+    public Group(String groupName) {
         this.groupName = groupName;
-        this.students = students;
+      //  this.students = students;
     }
 
     public void addStudent(Student student) throws GroupOverflowException {
@@ -29,17 +29,16 @@ public class Group {
 
     }
 
-    public Student searchStudentByLastName(String lastName) throws GroupOverflowException {
-        Student student = null;
+    public Student searchStudentByLastName(String lastName) throws StudentNotFoundException {
+        Student student;
         for (int i = 0; i < students.length; i++) {
-            if (students[i] != null && lastName.equals(students[i])) {
+            if (students[i] != null && lastName.equals(students[i].getLastName())) {
                 student = students[i];
-            } else {
-                throw new GroupOverflowException("Student " + lastName + " was not found");
+                System.out.println("Student  " + student.getLastName() + " was found");
+                return student;
             }
         }
-        return student;
-
+        throw new StudentNotFoundException("Student " + lastName + " was not found");
     }
 
     public boolean removeStudentByID(int id) {
