@@ -32,6 +32,7 @@ public class Main {
 
         } catch (GroupOverflowException e) {
             System.out.println(e);
+            System.err.println("Error");
         }
         System.out.println("-----------------------------------------");
 
