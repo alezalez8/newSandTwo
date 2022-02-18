@@ -7,14 +7,6 @@ public class Student extends Human {
     public Student() {
     }
 
-/*
-    public Student(int id, String groupName) {
-        this.id = id;
-        this.groupName = groupName;
-    }
-*/
-
-
 
     public Student(String name, String lastName, Gender gender) {
         super(name, lastName, gender);
@@ -44,9 +36,10 @@ public class Student extends Human {
 
     @Override
     public String toString() {
-        return  "id = " + id + ", " + super.getName() + "  " + super.getLastName() +
+        return  "id = " + id + ", " + super.getLastName() + "  " + super.getName() +
                 ",  gender: " + super.getGender() + "; ";
 
 
     }
+
 }

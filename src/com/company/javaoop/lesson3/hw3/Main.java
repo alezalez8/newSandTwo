@@ -12,9 +12,9 @@ public class Main {
         Student student7 = new Student("Igor", "Zadynayskyj", Gender.MAIL);
         Student student8 = new Student("Egor", "Sverdlov", Gender.MAIL);
         Student student9 = new Student("Yuriy", "Azarov", Gender.MAIL);
-        // Student student10 = new Student("Yuriy", "Azarov", Gender.MAIL);
-        Student student10 = new Student("Oleg", "Menshikov", Gender.MAIL);
-        Student student11 = new Student("Artyr", "Lepotov", Gender.MAIL);
+        Student student10 = new Student("Yuriy", "Azarov", Gender.MAIL);
+        Student student11 = new Student("Oleg", "Menshikov", Gender.MAIL);
+        Student student12 = new Student("Artyr", "Lepotov", Gender.MAIL);
 
         Group group = new Group("javaoop");
 
@@ -30,27 +30,39 @@ public class Main {
             group.addStudent(student9);
             group.addStudent(student10);
             group.addStudent(student11);
+            group.addStudent(student12);
 
         } catch (GroupOverflowException e) {
             System.out.println(e);
-           // System.err.println(e + "Group is completed, you can't added any students");
         }
-        System.out.println("-----------------------------------------");
+        System.out.println("----------------1------------------------");
 
         try {
             group.searchStudentByLastName("Sverdlov");
-            group.searchStudentByLastName("Sverdlo");
+            group.searchStudentByLastName("Sverd");
         } catch (StudentNotFoundException e) {
             System.out.println(e);
-                    }
-        System.out.println("-----------------------------------------");
+        }
+        System.out.println("------------------2----------------------");
 
         group.removeStudentByID(0);
-        group.removeStudentByID(9);
+        group.removeStudentByID(5);
         group.removeStudentByID(10);
 
-        System.out.println("-----------------------------------------");
+        System.out.println("------------------3----------------------");
         System.out.println(group);
+
+        System.out.println("------------------4----------------------");
+        try {
+            group.addStudent(student12);
+        } catch (GroupOverflowException e) {
+            System.out.println(e);
+        }
+
+        System.out.println("-------------------5---------------------");
+        System.out.println(group);
+
+
     }
 
 }

@@ -1,11 +1,15 @@
 package com.company.javaoop.lesson3.hw3;
 
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Group {
 
     private String groupName;
     private Student[] students = new Student[10];
+    private int countOfStudents = 0;
 
     public Group() {
     }
@@ -19,8 +23,7 @@ public class Group {
         for (int i = 0; i < students.length; i++) {
             if (students[i] != null && student.getName().equals(students[i].getName())
                     && student.getLastName().equals(students[i].getLastName())) {
-                System.err.println("This student is already in this group, you can't add again");
-                return;
+                throw new GroupOverflowException("This student is already in this group, you can't add again");
             }
         }
 
@@ -29,6 +32,7 @@ public class Group {
                 student.setGroupName(groupName);
                 student.setId(i + 1);
                 students[i] = student;
+                countOfStudents++;
                 System.out.println("Student " + student.getName() +
                         " " + student.getLastName() + " was added to group succesfully");
                 return;
@@ -51,10 +55,38 @@ public class Group {
         throw new StudentNotFoundException("Student " + lastName + " was not found");
     }
 
+
+    public Student[] sortByLastName() {
+         /*
+          Stream.of(students).filter(student -> student!= null)
+                  .sorted(Comparator.comparing(st -> st.getLastName()))
+                  .collect(Collectors.toList());
+
+    */
+        Student[] factStudents = new Student[countOfStudents];
+        int newArrayOfStudent = 0;
+        for (int i = 0; i < students.length; i++) {
+            if (students[i] != null) {
+                factStudents[newArrayOfStudent] = students[i];
+                newArrayOfStudent++;
+            }
+
+        }
+        Arrays.sort(factStudents, (e1, e2) -> {
+                    if (e1 != null || e2 != null) {
+                        return e1.getLastName().compareTo(e2.getLastName());
+                    } else return 0;
+                }
+        );
+        return factStudents;
+
+    }
+
     public boolean removeStudentByID(int id) {
         for (int i = 0; i < students.length; i++) {
             if (students[i] != null && id == students[i].getId()) {
                 students[i] = null;
+                countOfStudents--;
                 System.out.println("Student with id = " + id + " was deleted succesfully");
                 return true;
             }
@@ -82,7 +114,9 @@ public class Group {
     @Override
     public String toString() {
         return "Группа: " + "\"" + groupName + "\"" +
-                ", студенты: " + Arrays.toString(students) +
+                ", студенты: "
+                + Arrays.toString(sortByLastName())
+                +
                 '}';
     }
 }
