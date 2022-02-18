@@ -7,9 +7,17 @@ public class Student extends Human {
     public Student() {
     }
 
+/*
     public Student(int id, String groupName) {
         this.id = id;
         this.groupName = groupName;
+    }
+*/
+
+
+
+    public Student(String name, String lastName, Gender gender) {
+        super(name, lastName, gender);
     }
 
     public Student(String name, String lastName, Gender gender, int id, String groupName) {
@@ -36,8 +44,8 @@ public class Student extends Human {
 
     @Override
     public String toString() {
-        return "Student: " + super.getName() + "  " + super.getLastName() +
-                ",  gender:   " + super.getGender() + ", group: " + groupName + ", id = " + id;
+        return  "id = " + id + ", " + super.getName() + "  " + super.getLastName() +
+                ",  gender: " + super.getGender() + "; ";
 
 
     }

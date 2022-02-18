@@ -12,12 +12,22 @@ public class Group {
 
     public Group(String groupName) {
         this.groupName = groupName;
-      //  this.students = students;
     }
 
     public void addStudent(Student student) throws GroupOverflowException {
+
+        for (int i = 0; i < students.length; i++) {
+            if (students[i] != null && student.getName().equals(students[i].getName())
+                    && student.getLastName().equals(students[i].getLastName())) {
+                System.err.println("This student is already in this group, you can't add again");
+                return;
+            }
+        }
+
         for (int i = 0; i < students.length; i++) {
             if (students[i] == null) {
+                student.setGroupName(groupName);
+                student.setId(i + 1);
                 students[i] = student;
                 System.out.println("Student " + student.getName() +
                         " " + student.getLastName() + " was added to group succesfully");
@@ -71,9 +81,8 @@ public class Group {
 
     @Override
     public String toString() {
-        return "Group{" +
-                "groupName='" + groupName + '\'' +
-                ", students=" + Arrays.toString(students) +
+        return "Группа: " + "\"" + groupName + "\"" +
+                ", студенты: " + Arrays.toString(students) +
                 '}';
     }
 }

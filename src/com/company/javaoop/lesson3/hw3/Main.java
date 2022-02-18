@@ -3,17 +3,18 @@ package com.company.javaoop.lesson3.hw3;
 public class Main {
     public static void main(String[] args) throws StudentNotFoundException {
 
-        Student student1 = new Student("Aleks", "Shunin", Gender.MAIL, 1, "javaoop");
-        Student student2 = new Student("Gena", "Ivanov", Gender.MAIL, 2, "javaoop");
-        Student student3 = new Student("Sasha", "Petrov", Gender.MAIL, 3, "javaoop");
-        Student student4 = new Student("Leha", "Sidorov", Gender.MAIL, 4, "javaoop");
-        Student student5 = new Student("Sveta", "Ischenko", Gender.MAIL, 5, "javaoop");
-        Student student6 = new Student("Lena", "Kapustina", Gender.MAIL, 6, "javaoop");
-        Student student7 = new Student("Igor", "Zadynayskyj", Gender.MAIL, 7, "javaoop");
-        Student student8 = new Student("Egor", "Sverdlov", Gender.MAIL, 8, "javaoop");
-        Student student9 = new Student("Yuriy", "Azarov", Gender.MAIL, 9, "javaoop");
-        Student student10 = new Student("Oleg", "Menshikov", Gender.MAIL, 10, "javaoop");
-        Student student11 = new Student("Artyr", "Lepotov", Gender.MAIL, 11, "javaoop");
+        Student student1 = new Student("Aleks", "Shunin", Gender.MAIL);
+        Student student2 = new Student("Gena", "Ivanov", Gender.MAIL);
+        Student student3 = new Student("Sasha", "Petrov", Gender.MAIL);
+        Student student4 = new Student("Leha", "Sidorov", Gender.MAIL);
+        Student student5 = new Student("Sveta", "Ischenko", Gender.FEMALE);
+        Student student6 = new Student("Lena", "Kapustina", Gender.FEMALE);
+        Student student7 = new Student("Igor", "Zadynayskyj", Gender.MAIL);
+        Student student8 = new Student("Egor", "Sverdlov", Gender.MAIL);
+        Student student9 = new Student("Yuriy", "Azarov", Gender.MAIL);
+        // Student student10 = new Student("Yuriy", "Azarov", Gender.MAIL);
+        Student student10 = new Student("Oleg", "Menshikov", Gender.MAIL);
+        Student student11 = new Student("Artyr", "Lepotov", Gender.MAIL);
 
         Group group = new Group("javaoop");
 
@@ -32,7 +33,7 @@ public class Main {
 
         } catch (GroupOverflowException e) {
             System.out.println(e);
-            System.err.println("Error");
+           // System.err.println(e + "Group is completed, you can't added any students");
         }
         System.out.println("-----------------------------------------");
 
@@ -41,12 +42,12 @@ public class Main {
             group.searchStudentByLastName("Sverdlo");
         } catch (StudentNotFoundException e) {
             System.out.println(e);
-        }
+                    }
         System.out.println("-----------------------------------------");
 
-        group.removeStudentByID(7);
+        group.removeStudentByID(0);
         group.removeStudentByID(9);
-        group.removeStudentByID(11);
+        group.removeStudentByID(10);
 
         System.out.println("-----------------------------------------");
         System.out.println(group);
