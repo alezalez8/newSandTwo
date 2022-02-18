@@ -5,7 +5,7 @@ public class ExeptionTestEx1 {
     public static void main(String[] args) {
 
         NullPointerException npe = new NullPointerException(":)");
-       // throw new NullPointerException();
+
         System.out.println("Hello world");
     }
 }

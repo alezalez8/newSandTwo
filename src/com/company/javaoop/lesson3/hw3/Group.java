@@ -1,9 +1,6 @@
 package com.company.javaoop.lesson3.hw3;
 
 import java.util.Arrays;
-import java.util.Comparator;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Group {
 
@@ -23,7 +20,7 @@ public class Group {
         for (int i = 0; i < students.length; i++) {
             if (students[i] != null && student.getName().equals(students[i].getName())
                     && student.getLastName().equals(students[i].getLastName())) {
-                throw new GroupOverflowException("This student is already in this group, you can't add again");
+                throw new GroupOverflowException("This student is already present in this group, you can't add this student again");
             }
         }
 

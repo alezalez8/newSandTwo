@@ -28,7 +28,7 @@ public class Main {
             group.addStudent(student7);
             group.addStudent(student8);
             group.addStudent(student9);
-            group.addStudent(student10);
+            group.addStudent(student10); // the same as student9
             group.addStudent(student11);
             group.addStudent(student12);
 
@@ -39,14 +39,14 @@ public class Main {
 
         try {
             group.searchStudentByLastName("Sverdlov");
-            group.searchStudentByLastName("Sverd");
+            group.searchStudentByLastName("Sverd");  // try to find non-existent student
         } catch (StudentNotFoundException e) {
             System.out.println(e);
         }
         System.out.println("------------------2----------------------");
 
-        group.removeStudentByID(0);
-        group.removeStudentByID(5);
+        group.removeStudentByID(0); // try to delete non-existent student
+        group.removeStudentByID(9);
         group.removeStudentByID(10);
 
         System.out.println("------------------3----------------------");
@@ -54,6 +54,7 @@ public class Main {
 
         System.out.println("------------------4----------------------");
         try {
+            group.addStudent(student9);  // try to add one more student
             group.addStudent(student12);
         } catch (GroupOverflowException e) {
             System.out.println(e);

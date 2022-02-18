@@ -7,8 +7,10 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args)  {
-        File file = new File("price.txt");
+    public static void main(String[] args) {
+
+        String ss = null;
+       /* File file = new File("price.txt");
 
 
         Integer price = null;
@@ -31,7 +33,11 @@ public class Main {
             System.out.println("Thank you for using our service :)   ");
         }
         System.out.println("price = " + price);
-    }
+    }*/
+        if (ss.equals("sfsfsf")) {
+            System.out.println("null");
+        } else System.out.println("not null");
 
+    }
 }
 
