@@ -63,7 +63,12 @@ public class Main {
         System.out.println("-------------------5---------------------");
         System.out.println(group);
 
-
+        group.removeStudentByID(4);
+        group.removeStudentByID(5);
+        group.removeStudentByID(6);
+        group.removeStudentByID(7);
+        System.out.println("-------------------6---------------------");
+        System.out.println(group);
     }
 
 }
